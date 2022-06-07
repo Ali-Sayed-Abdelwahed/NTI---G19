@@ -1,4 +1,7 @@
 let form = document.getElementById("form");
+let uName = document.getElementsByTagName("input")[0];
+let uAge = document.getElementsByTagName("input")[1];
+let uMobile = document.getElementsByTagName("input")[2];
 let keysHead = ["name", "age", "mobile"];
 let tableBody = document.getElementById("tableBody");
 //create read from storage
@@ -53,7 +56,7 @@ const showAll = (allData) => {
     let editBtn = createElement(col, "button", "Edit", "btn btn-warning mx-3");
     editBtn.addEventListener("click", (e) => {
       if (ele.status) {
-        if (confirm("Are You Sure To Change Status")) {
+        if (confirm("Are You Sure To Change The Status ?")) {
           if (ele.status == "active") ele.status = "inactive";
           else ele.status = "active";
           writeDataToStorage("tasks", allData);
@@ -68,23 +71,33 @@ const showAll = (allData) => {
       "btn btn-danger mx-3"
     );
     deleteBtn.addEventListener("click", (e) => {
-      allData.splice(i, 1);
-      writeDataToStorage("tasks", allData);
-      showAll(allData);
+      if (confirm("Are You Sure To Delete This User ?")) {
+        allData.splice(i, 1);
+        writeDataToStorage("tasks", allData);
+        showAll(allData);
+      }
     });
   });
 };
 //add new task
 if (form) {
   form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const user = { status: "active", id: Date.now() };
-    keysHead.forEach((ele) => (user[ele] = form.elements[ele].value));
-    const allTasks = readDataFromStorage("tasks");
-    allTasks.push(user);
-    writeDataToStorage("tasks", allTasks);
-    form.reset();
-    window.location.href = "index.html";
+    if (
+      uName.value.length == 0 ||
+      uAge.value.length == 0 ||
+      uMobile.value.length < 11
+    )
+      e.preventDefault();
+    else {
+      e.preventDefault();
+      const user = { status: "active", id: Date.now() };
+      keysHead.forEach((ele) => (user[ele] = form.elements[ele].value));
+      const allTasks = readDataFromStorage("tasks");
+      allTasks.push(user);
+      writeDataToStorage("tasks", allTasks);
+      form.reset();
+      window.location.href = "index.html";
+    }
   });
 }
 if (tableBody) {
