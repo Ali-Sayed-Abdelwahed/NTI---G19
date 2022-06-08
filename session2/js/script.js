@@ -44,8 +44,8 @@ const showAll = (allData) => {
     createElement(row, "td", ele.id, null);
     createElement(row, "td", ele.name, null);
     createElement(row, "td", ele.age, null);
+    createElement(row, "td", ele.mobile, null);
     createElement(row, "td", ele.status, null);
-    // createElement(row, "td", ele.contentText, null);
     let col = createElement(row, "td", null, "text-center");
     let submitBtn = createElement(
       col,
