@@ -66,14 +66,7 @@ if (userData) {
     const col = createElement(row, "td", null, "text-center");
     let editBtn = createElement(col, "button", "Edit", "btn btn-warning mx-3");
     editBtn.addEventListener("click", (e) => {
-      if (user.status) {
-        if (confirm("Are You Sure To Change The Status ?")) {
-          if (user.status == "active") user.status = "inactive";
-          else user.status = "active";
-          writeDataToStorage("single", allData);
-          // showSingle(allData);
-        }
-      }
+      editUserData(index);
     });
   } catch (e) {
     const row = createElement(tableBody, "tr", null, "alert alert-danger");
