@@ -10,7 +10,7 @@ yargs.command({
     api: { demandOption: true },
   },
   handler: function (argv) {
-   (dealWithJson.showDataFromApi(argv.api)); 
+   (dealWithApi.showDataFromApi(argv.api)); 
   },
 });
 yargs.argv;
