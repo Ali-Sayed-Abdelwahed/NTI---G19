@@ -1,0 +1,31 @@
+{{>header}}
+{{>navbar}}
+<section class="container my-5">
+    {{#if postData}}
+    <h3 class="text-center text-primary">Post</h3>
+    <div class="my-4">
+        <div class="my2">
+            <h3>Title</h3>
+            <p class="lead">{{postData.title}}</p>
+        </div>
+        <div class="my2">
+            <h3>Date</h3>
+            <p class="lead">{{postData.date}}</p>
+        </div>
+        <div class="my2">
+            <h3>Content</h3>
+            <p class="lead">{{postData.content}}</p>
+        </div>
+    </div>
+    {{else}}
+    <div class="alert alert-danger p-3">
+        <h3 class="text-center">Invalid ID</h3>
+        <p class="lead text-center">No Data Found</p>
+        <p class="text-center">
+            <a href="/" class="btn btn-outline-primary text-center">Back Home</a>
+        </p>
+    </div>
+
+    {{/if}}
+</section>
+{{>footer}}
